@@ -1,0 +1,35 @@
+a-
+
+
+_Para saber a que centro de salud fueron asignados los lotes, podría desde la base de datos, crear una nueva tabla
+de Centro de Salud (que posea todos los centros de salud)
+y al lote agregarle el campo id_centro_salud
+Desde el MVC, el controller le pida al model, obtener los id_centro_salud de cada lote, entrecruzarlos con los id de la tabla
+ "Centro de Salud" retornara los resultados al controller que los enviará al view para mostrar los resultados
+
+ _Para marcar un lote como "usado" solo bastará con agregar un boolean a la tabla "Lote", llamado usado.<- desde la DB
+ Desde el MVC, se puede recuperar solo las vacunas en las que "usado" sea false, para tener los lotes disponibles.
+
+
+ _Desde la base de datos, no serían necesarios cambios.
+ Desde la api, habría que pedir solo los lotes cuyo id_ciudad fuese igual al de la ciudad registrada en esa API
+
+b-API rest
+
+Endpoints:
+-GET api/centro_salud/123
+traeria todos los centros de salud donde el id_ciudad = 123 (123 es remplazable por cualquier id de ciudad)
+-GET api/lote/123
+en este caso traeria todos los lotes donde el id_centro_salud = 123 (123 es remplazable por cualquier id_centro_salud)
+
+
+
+
+
+
+
+
+ c- Creo que puede traerles muchas ventajas, con la api pueden acceder desde distintas plataformas, les otorga facilidad para
+ poder implementarlo en los distintos sistemas, control en lo que los usuarios pueden ver y ayuda a enfocarse en su ciudad sin
+ tener que tener en cuenta el resto de las ciudades, que para éste caso, son irrelevantes (eso tambien conlleva consultas
+ mas pequeñas y rápidas a la base de datos)
